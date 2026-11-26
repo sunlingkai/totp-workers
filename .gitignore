@@ -1,0 +1,11 @@
+.wrangler/
+node_modules/
+.dev.vars
+.env
+.env.*
+*cloudflare*.json
+*github*.json
+*.bak
+*.log
+.DS_Store
+Thumbs.db

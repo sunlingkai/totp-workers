@@ -1,0 +1,4 @@
+name = "totp"
+main = "worker.js"
+compatibility_date = "2025-07-11"
+workers_dev = true
