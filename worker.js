@@ -527,12 +527,24 @@ function renderHTML() {
       font-variant-numeric: tabular-nums;
       color: var(--hero-text);
       padding-left: 0.12em;
+      white-space: nowrap;
       transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .token-value.is-8digit {
+      font-size: clamp(2.05rem, 8.2vw, 2.95rem);
+      letter-spacing: 0.08em;
+      padding-left: 0.08em;
     }
 
     .token-value.is-empty {
       color: rgba(148, 163, 184, 0.42);
       letter-spacing: 0.18em;
+    }
+
+    .token-value.is-empty.is-8digit {
+      letter-spacing: 0.12em;
+      padding-left: 0.12em;
     }
 
     .token-value.is-error {
@@ -897,6 +909,361 @@ function renderHTML() {
       .hero-actions { flex-direction: column; }
       .copy-btn, .next-chip { width: 100%; justify-content: center; }
       .options-grid { grid-template-columns: 1fr; }
+    }
+
+    /* 平板与中等视口：放宽画幅并垂直居中，保持舒展比例 */
+    @media (min-width: 768px) {
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        justify-content: center;
+        padding: 32px 24px 40px;
+        background-image:
+          radial-gradient(960px 480px at 14% -8%, var(--bg-glow-1), transparent 70%),
+          radial-gradient(860px 440px at 88% 4%, var(--bg-glow-2), transparent 70%);
+      }
+
+      .shell {
+        max-width: 640px;
+        gap: 20px;
+      }
+
+      .topbar {
+        padding: 4px;
+      }
+
+      .logo-wrap {
+        height: 42px;
+        min-width: 42px;
+        border-radius: 12px;
+        padding: 6px 10px;
+      }
+
+      .logo-wrap img {
+        height: 26px;
+        max-width: 100px;
+      }
+
+      .brand-title h1 {
+        font-size: 1.38rem;
+      }
+
+      .privacy-pill {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+        gap: 5px;
+      }
+
+      .theme-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+
+      .card {
+        border-radius: 26px;
+      }
+
+      .hero {
+        padding: 28px 30px 26px;
+      }
+
+      .panel-body {
+        padding: 26px 30px 28px;
+        gap: 22px;
+      }
+
+      .field-label {
+        font-size: 0.94rem;
+      }
+
+      .status-badge {
+        font-size: 0.8rem;
+        padding: 3px 11px;
+      }
+
+      .secret-input {
+        font-size: 1.02rem;
+        padding: 15px 10px 15px 16px;
+      }
+
+      .icon-tool {
+        height: 36px;
+        padding: 0 10px;
+        font-size: 0.83rem;
+      }
+
+      .field-hint {
+        font-size: 0.82rem;
+        margin-top: 9px;
+      }
+
+      .option-label {
+        font-size: 0.85rem;
+      }
+
+      .segmented {
+        padding: 4px;
+        border-radius: 12px;
+        gap: 4px;
+      }
+
+      .seg-btn {
+        height: 40px;
+        font-size: 0.9rem;
+      }
+
+      .copy-btn,
+      .next-chip {
+        height: 52px;
+        font-size: 1rem;
+        border-radius: 14px;
+      }
+
+      .meta-strip {
+        padding-top: 18px;
+        font-size: 0.82rem;
+      }
+
+      .kbd {
+        font-size: 0.76rem;
+        padding: 2px 7px;
+      }
+
+      .footer {
+        font-size: 0.82rem;
+      }
+    }
+
+    /* 桌面浏览器：宽幅左右双栏工作台（左输入配置，右大屏验证码舞台） */
+    @media (min-width: 960px) {
+      body {
+        padding: 40px 36px 48px;
+      }
+
+      .shell {
+        max-width: 980px;
+        gap: 22px;
+      }
+
+      .brand {
+        gap: 14px;
+      }
+
+      .brand-title {
+        gap: 10px;
+      }
+
+      .brand-title h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+        grid-template-areas: "panel hero";
+        align-items: stretch;
+        min-height: 420px;
+      }
+
+      .panel-body {
+        grid-area: panel;
+        padding: 36px 38px 34px;
+        gap: 24px;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-area: hero;
+        padding: 34px 36px 34px;
+        border-bottom: none;
+        border-left: 1px solid var(--hero-border);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .top-progress {
+        height: 4px;
+      }
+
+      .hero-head {
+        margin-bottom: 18px;
+      }
+
+      .hero-label {
+        font-size: 0.85rem;
+      }
+
+      .account-tag {
+        max-width: 240px;
+        font-size: 0.8rem;
+        padding: 3px 10px;
+      }
+
+      .countdown-pill {
+        padding: 5px 12px 5px 8px;
+        gap: 8px;
+        font-size: 0.92rem;
+      }
+
+      .ring-svg {
+        width: 25px;
+        height: 25px;
+      }
+
+      .code-hitbox {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 188px;
+        padding: 28px 20px 24px;
+        border-radius: 18px;
+      }
+
+      .token-value {
+        font-size: clamp(3rem, 3.8vw, 3.95rem);
+        letter-spacing: 0.12em;
+      }
+
+      .token-value.is-8digit {
+        font-size: clamp(2.3rem, 2.95vw, 3rem);
+        letter-spacing: 0.08em;
+        padding-left: 0.08em;
+      }
+
+      .token-value.is-error {
+        font-size: 1.5rem;
+        padding: 16px 0;
+      }
+
+      .click-hint {
+        margin-top: 14px;
+        font-size: 0.84rem;
+      }
+
+      .hero-actions {
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .copy-btn {
+        height: 54px;
+        font-size: 1.02rem;
+      }
+
+      .next-chip {
+        height: 54px;
+        padding: 0 16px;
+        font-size: 0.92rem;
+      }
+
+      .next-chip span.next-label {
+        font-size: 0.76rem;
+      }
+
+      .field-head {
+        margin-bottom: 10px;
+      }
+
+      .field-label {
+        font-size: 0.98rem;
+      }
+
+      .input-shell {
+        border-radius: 14px;
+      }
+
+      .secret-input {
+        font-size: 1.05rem;
+        padding: 16px 10px 16px 18px;
+      }
+
+      .input-tools {
+        padding-right: 8px;
+        gap: 4px;
+      }
+
+      .icon-tool {
+        height: 38px;
+        padding: 0 11px;
+        font-size: 0.84rem;
+        border-radius: 9px;
+      }
+
+      .field-hint {
+        font-size: 0.84rem;
+        line-height: 1.55;
+      }
+
+      .options-grid {
+        gap: 16px;
+      }
+
+      .option-box {
+        gap: 9px;
+      }
+
+      .option-label {
+        font-size: 0.88rem;
+      }
+
+      .seg-btn {
+        height: 42px;
+        font-size: 0.92rem;
+      }
+
+      .meta-strip {
+        margin-top: auto;
+        padding-top: 20px;
+        font-size: 0.84rem;
+      }
+
+      .footer {
+        font-size: 0.84rem;
+      }
+
+      .toast {
+        bottom: 34px;
+        padding: 12px 20px;
+        font-size: 0.92rem;
+      }
+    }
+
+    /* 宽屏显示器进一步舒展画幅与数字尺寸 */
+    @media (min-width: 1280px) {
+      .shell {
+        max-width: 1080px;
+      }
+
+      .card {
+        min-height: 452px;
+        grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr);
+      }
+
+      .panel-body {
+        padding: 42px 44px 38px;
+        gap: 28px;
+      }
+
+      .hero {
+        padding: 40px 42px 38px;
+      }
+
+      .code-hitbox {
+        min-height: 208px;
+        padding: 32px 24px 28px;
+      }
+
+      .token-value {
+        font-size: 4.1rem;
+      }
+
+      .token-value.is-8digit {
+        font-size: 3.15rem;
+      }
     }
   </style>
 </head>
@@ -1265,7 +1632,7 @@ function renderHTML() {
         accountTag.textContent = '';
         accountTag.classList.remove('visible');
         codeHitbox.classList.remove('ready', 'copied');
-        tokenDisplay.className = 'token-value is-empty';
+        tokenDisplay.className = 'token-value is-empty' + (state.digits === 8 ? ' is-8digit' : '');
         tokenDisplay.textContent = formatCode('', state.digits);
         clickHint.querySelector('span').textContent = '输入密钥后自动生成，点击此处直接复制';
         copyBtn.disabled = true;
@@ -1316,7 +1683,7 @@ function renderHTML() {
           state.nextCode = nxt;
           state.lastCounter = counter;
 
-          tokenDisplay.className = 'token-value';
+          tokenDisplay.className = 'token-value' + (myDigits === 8 ? ' is-8digit' : '');
           tokenDisplay.textContent = formatCode(cur, myDigits);
           nextCodeText.textContent = formatCode(nxt, myDigits);
           codeHitbox.classList.add('ready');
@@ -1582,6 +1949,7 @@ function renderHTML() {
             state.lastCounter = -1;
             refreshCodesForCounter(Math.floor(Date.now() / (state.period * 1000)));
           } else if (!state.rawInput.trim()) {
+            tokenDisplay.className = 'token-value is-empty' + (state.digits === 8 ? ' is-8digit' : '');
             tokenDisplay.textContent = formatCode('', state.digits);
           }
         });
